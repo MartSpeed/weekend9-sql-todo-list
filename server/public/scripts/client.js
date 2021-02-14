@@ -43,13 +43,15 @@ function saveTask() {
  *
  * "button for delete" will delete the $(this).data() from the DOM
  */
-function addTask(weekend_to_do_app) {
+function addTask(event) {
+  event.preventDefault();
   console.log('this is the addTask function');
-  console.log('inside weekend to do app', weekend_to_do_app);
+  let task = $('#task_to_insert').val();
+  console.log('task is', task);
 
   $('#table_input').append(`
     <tr>
-        <td>this row is the value of the click button, what is the value of the click butt called in a template literal?</td>
+        <td>${task}</td>
         <td><button id="button_complete">complete</button></td>
         <td><button id="button_delete">delete</button></td>
     </tr>
