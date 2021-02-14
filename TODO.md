@@ -12,9 +12,12 @@
 
 #### ## jQuery - $.ajax(function{ type: "", url: "", data: "name of the const variable made"}).then().catch()
 
-- [] copy jQuery file
+- [x] copy jQuery file
 
 ## Database
+
+- [] database name: weekend-to-do-app
+- [] variables, "task_name", "complete"
 
 ## server
 
