@@ -56,9 +56,9 @@ Thank you to William Krug for providing this amazing TODO list
    - [x] `app.listen(port, function() { console.log("I'm listening....", port); })`
 8. [x] Create `public` directory inside of the `server` directory
 9. [x] Create `index.html` inside of the `public` directory
-10. [] Create `styles` directory inside of the `public` directory
-11. [] Create `style.css` inside of the `styles` directory
-    ​
+10. [x] Create `styles` directory inside of the `public` directory
+11. [x] Create `style.css` inside of the `styles` directory
+        ​
 
 - [x] `<link>` file to `index.html`
       ​
