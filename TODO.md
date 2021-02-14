@@ -43,17 +43,17 @@ Thank you to William Krug for providing this amazing TODO list
    - [x] `node_modules/` needs to be present
    - [] `.DS_Store` needs to be present
 5. [x] Update `package.json` file with `start` command
-   - [] Find the `"scripts"` section
+   - [x] Find the `"scripts"` section
    - [x] Add the following: `"start": "node ./server/server.js"`
 6. [x] Create `server` directory
 7. [x] Create `server.js` inside of the `server` directory
-   - [] `const express = require('express')`
-   - [] `const app = express()`
-   - [] `const port = 5000`
-   - [] `app.use(express.static('server/public'))`
-   - [] `app.use(express.json())`
-   - [] `app.use (express.urlencoded({extended: true}))`
-   - [] `app.listen(port, function() { console.log("I'm listening....", port); })`
+   - [x] `const express = require('express')`
+   - [x] `const app = express()`
+   - [x] `const port = 5000`
+   - [x] `app.use(express.static('server/public'))`
+   - [x] `app.use(express.json())`
+   - [x] `app.use (express.urlencoded({extended: true}))`
+   - [x] `app.listen(port, function() { console.log("I'm listening....", port); })`
 8. [x] Create `public` directory inside of the `server` directory
 9. [x] Create `index.html` inside of the `public` directory
 10. [] Create `styles` directory inside of the `public` directory

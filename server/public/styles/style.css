@@ -1,0 +1,25 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 15px;
+  padding: 0;
+}
+div {
+  margin: 0;
+  padding: 0;
+}
+table {
+  margin: 0 10px;
+  padding: 0;
+  background-color: orange;
+}
+input {
+  margin: 5px;
+  padding: 8px;
+}
+button {
+  margin: 5px;
+  padding: 8px;
+}
