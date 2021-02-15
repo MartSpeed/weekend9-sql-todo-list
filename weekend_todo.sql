@@ -1,3 +1,6 @@
 -- CREATE TABLE to be pulled from
-
--- INSERT INTO the VALUES() that need to be recorded 
+-- CREATE TABLE information for weekend_todo database
+CREATE TABLE "weekend_todo" (
+	"id" SERIAL PRIMARY KEY,
+	"task" VARCHAR (1024) NOT NULL,
+);
