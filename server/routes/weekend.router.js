@@ -31,7 +31,12 @@ router.post('/', function (request, response) {
       response.sendStatus(500);
     });
 });
-//GET
+/**
+ * GET INCANTATION
+ * NAME: 'GET'
+ * DESCRIPTION:grab the query from the DOM and insert that from server to and feed the
+ * updated query into the "task" database and display the results per row
+ */
 router.get('/', function (request, response) {
   // I want to select everything in the workout list and set the order by id
   pool
@@ -45,17 +50,5 @@ router.get('/', function (request, response) {
       response.sendStatus(500);
     });
 });
-// GET
-// koalaRouter.get('/', (req, res) => {
-//   pool
-//     .query(`SELECT * FROM "koalas" ORDER BY "id"`)
-//     .then(function (dbRes) {
-//       console.log('dbRes.rows', dbRes.rows);
-//       res.send(dbRes.rows);
-//     })
-//     .catch(function (error) {
-//       console.log('GET error', error);
-//       res.sendStatus(500);
-//     });
-// });
+
 module.exports = router;

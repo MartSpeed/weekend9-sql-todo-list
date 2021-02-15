@@ -1,7 +1,3 @@
-//const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
-
-//const { response } = require('express');
-
 console.log('client: weekend todo list');
 // start the jQuery
 $(document).ready(onReady);
@@ -74,7 +70,12 @@ function addTask(event) {
  * GET INCANTATION
  *
  * NAME: function getTask()
- * DESCRIPTION: grab the information from the server and give it to the database
+ * DESCRIPTION: grab the information from the server and give it to the database.
+ * using the response[i].task for the 'GET' INCANTATION that takes in an array from the
+ * [sqlArgs] variable and appends the information to the DOM and record the information
+ * on the weekend-to-do-app database.
+ *
+ * NOTE: This accepts JSON which is why it requires an object to read the information
  */
 function getTask() {
   console.log('in the getTask() function');
@@ -83,6 +84,15 @@ function getTask() {
     url: '/task',
   }).then(function (response) {
     console.log('GET response', response);
+    for (let i = 0; i < response.length; i++) {
+      $('#table_input').append(`
+      <tr>
+        <td>${response[i].task}</td>
+        <td><button id="button_complete">complete</button></td>
+        <td><button id="button_delete">delete</button></td>
+      </tr>
+      `);
+    }
   });
 }
 // function getKoalas() {
