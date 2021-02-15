@@ -10,8 +10,9 @@ function onReady() {
   console.log('DOM ready');
   $('#button_addTask').on('click', addTask);
   getTask();
+
   // click listeners
-  //$(document).on('click', '#button_complete', completeClick);
+  $(document).on('click', '#button_complete', completeClick);
 }
 
 /**
@@ -66,10 +67,10 @@ function addTask(event) {
  * change the task from false to true and and then change the class of the
  * table item to green.
  */
-// function completeClick() {
-//   console.log('inside the complete button');
-//   $('#input_complete_cg').addClass('green');
-// }
+function completeClick() {
+  console.log('inside the complete button');
+  $(this).parent().parent().addClass('green');
+}
 
 /**
  * GET INCANTATION
@@ -92,41 +93,17 @@ function getTask() {
     for (let i = 0; i < response.length; i++) {
       $('#table_input').append(`
       <tr>
-        <td>${response[i].task}</td>
-        <td><button id="button_complete">complete</button></td>
-        <td><button id="button_delete">delete</button></td>
+        <td>${response[i].task}
+        <span>
+        <button id="button_complete">complete</button>
+        <button id="button_delete">delete</button>
+        </span>
+        </td>
       </tr>
       `);
     }
   });
 }
-// function getKoalas() {
-//   console.log('in getKoalas');
-//   // ajax call to server to get koalas
-//   $.ajax({
-//     method: 'GET',
-//     url: '/koalas',
-//   }).then(function (response) {
-//     console.log('GET response', response);
-//     for (let i = 0; i < response.length; i++) {
-//       $('#viewKoalas').append(`
-//         <tr>
-//           <td>${response[i].name}</td>
-//           <td>${response[i].age}</td>
-//           <td>${response[i].gender}</td>
-//           <td>${response[i].ready_for_transfer}</td>
-//           <td>${response[i].notes}</td>
-//           ${
-//             response[i].ready_for_transfer === false
-//               ? `<td>
-//                 <button class="btn-transfer" data-id="${response[i].id}">
-//                   Ready for transfer
-//                 </button>
-//               </td>`
-//               : `<td>ready to transfer</td>`
-//           }
-//         </tr>
-//       `);
-//     }
-//   });
-// } // end getKoalas
+
+// <td><button id="button_complete">complete</button></td>
+// <td><button id="button_delete">delete</button></td>
