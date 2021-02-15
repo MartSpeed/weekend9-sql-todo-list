@@ -9,18 +9,14 @@ $(document).ready(onReady);
 function onReady() {
   console.log('DOM ready');
   $('#button_addTask').on('click', addTask);
-
+  getTask();
   // click listeners
   //$(document).on('click', '#button_complete', completeClick);
 }
 
-// }
-// $.ajax() function call to server to POST task data
-function saveTask() {
-  console.log('saveTask function has been clicked');
-}
-
 /**
+ * POST INCANTATION
+ *
  * NAME: addTask() function
  * DESCRIPTION: when the "submit button" is clicked append the ('#button_addTask').val()
  * into the "table id" from the "task" value in the database to input the information
@@ -75,3 +71,48 @@ function addTask(event) {
 //   console.log('inside the complete button');
 //   $('#input_complete_cg').addClass('green');
 // }
+/**
+ * GET INCANTATION
+ *
+ * NAME: function getTask()
+ * DESCRIPTION: grab the information from the server and give it to the database
+ */
+function getTask() {
+  console.log('in the getTask() function');
+  $.ajax({
+    method: 'GET',
+    url: '/task',
+  }).then(function (response) {
+    console.log('GET response', response);
+  });
+}
+// function getKoalas() {
+//   console.log('in getKoalas');
+//   // ajax call to server to get koalas
+//   $.ajax({
+//     method: 'GET',
+//     url: '/koalas',
+//   }).then(function (response) {
+//     console.log('GET response', response);
+//     for (let i = 0; i < response.length; i++) {
+//       $('#viewKoalas').append(`
+//         <tr>
+//           <td>${response[i].name}</td>
+//           <td>${response[i].age}</td>
+//           <td>${response[i].gender}</td>
+//           <td>${response[i].ready_for_transfer}</td>
+//           <td>${response[i].notes}</td>
+//           ${
+//             response[i].ready_for_transfer === false
+//               ? `<td>
+//                 <button class="btn-transfer" data-id="${response[i].id}">
+//                   Ready for transfer
+//                 </button>
+//               </td>`
+//               : `<td>ready to transfer</td>`
+//           }
+//         </tr>
+//       `);
+//     }
+//   });
+// } // end getKoalas
