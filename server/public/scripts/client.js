@@ -53,7 +53,6 @@ function addTask(event) {
   })
     .then(function (response) {
       // clear the task list input button
-      $('#button_addTask').empty();
       console.log('this is the then function', response);
     })
     .catch(function (error) {
