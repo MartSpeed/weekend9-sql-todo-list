@@ -1,5 +1,7 @@
 //const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 
+//const { response } = require('express');
+
 console.log('client: weekend todo list');
 // start the jQuery
 $(document).ready(onReady);
@@ -12,22 +14,6 @@ function onReady() {
   //$(document).on('click', '#button_complete', completeClick);
 }
 
-// $.ajax() function call to server to POST task data
-// function saveKoala(newKoala) {
-//   console.log('in saveKoala', newKoala);
-//   $.ajax({
-//     method: 'POST',
-//     url: '/koalas',
-//     data: newKoala,
-//   }).then(function (response) {
-//     $('#viewKoalas').empty();
-//     $('#nameIn').val('');
-//     $('#ageIn').val('');
-//     $('#genderIn').val('');
-//     $('#readyForTransferIn').val('');
-//     $('#notesIn').val('');
-//     getKoalas();
-//   });
 // }
 // $.ajax() function call to server to POST task data
 function saveTask() {
@@ -67,11 +53,16 @@ function addTask(event) {
   $.ajax({
     method: 'POST',
     url: '/task',
-    data: task,
-  }).then(function (response) {
-    // clear the task list input button
-    $('#button_addTask').empty();
-  });
+    data: { task },
+  })
+    .then(function (response) {
+      // clear the task list input button
+      $('#button_addTask').empty();
+      console.log('this is the then function', response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 /**

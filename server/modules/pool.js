@@ -6,9 +6,9 @@ const pool = new pg.Pool({
   database: 'weekend-to-do-app',
 
   // These options are not required,
-  //but you may see them around
+  // but you may see them around
   host: 'localhost',
-  port: 5000,
+  port: 5432,
 });
 
 // connect to the postgreSQL

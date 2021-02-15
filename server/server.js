@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const { Router } = require('express');
 const weekendRouter = require('./routes/weekend.router');
 const PORT = 5000;
 
