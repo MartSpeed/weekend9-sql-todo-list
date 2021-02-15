@@ -82,14 +82,14 @@ Thank you to William Krug for providing this amazing TODO list
         ​
 
 - [x] Create `pool.js` inside of the `modules` director
-  - [] `const pg = require('pg')`
-  - [] `const config = { database: 'databasename', host: 'localhost' port: 5432, };`
-  - [] `const pool = new pg.Pool(config);`
-  - [] `pool.on("connect", () => {console.log('connected to postgres');});`
-  - [] `pool.on("error", (error) => {console.log('ERROR: Connecting to postgres', error);});`
-  - [] `module.exports = pool;`
-- [] `const pool = require('filepath to pool.js')` where needed
-  ​
+  - [x] `const pg = require('pg')`
+  - [x] `const config = { database: 'databasename', host: 'localhost' port: 5432, };`
+  - [x] `const pool = new pg.Pool(config);`
+  - [x] `pool.on("connect", () => {console.log('connected to postgres');});`
+  - [x] `pool.on("error", (error) => {console.log('ERROR: Connecting to postgres', error);});`
+  - [x] `module.exports = pool;`
+- [x] `const pool = require('filepath to pool.js')` where needed
+      ​
 
 16. [x] Create `routes` directory inside of the `server` directory
         Collapse

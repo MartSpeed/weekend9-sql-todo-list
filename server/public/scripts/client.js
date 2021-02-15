@@ -66,6 +66,7 @@ function addTask(event) {
 //   console.log('inside the complete button');
 //   $('#input_complete_cg').addClass('green');
 // }
+
 /**
  * GET INCANTATION
  *
