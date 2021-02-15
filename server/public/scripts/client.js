@@ -68,8 +68,14 @@ function addTask(event) {
  * table item to green.
  */
 function completeClick() {
+  let task = $('#table_input').val();
   console.log('inside the complete button');
   $(this).parent().parent().addClass('green');
+  $('#table_complete').append(`
+    <tr>
+      <td>${task}</td>
+    </tr>
+  `);
 }
 
 /**
