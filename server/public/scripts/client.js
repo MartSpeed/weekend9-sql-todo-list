@@ -66,12 +66,12 @@ function addTask(event) {
  * change the task from false to true and and then change the class of the
  * table item to green.
  */
-<<<<<<< HEAD
+
 // function completeClick() {
 //   console.log('inside the complete button');
 //   $('#input_complete_cg').addClass('green');
 // }
-=======
+
 function completeClick() {
   //let task = $('#table_input').val();
 
@@ -85,7 +85,7 @@ function completeClick() {
    * and append the information to the completed list
    */
 }
->>>>>>> feature-post
+
 
 /**
  * GET INCANTATION
@@ -108,18 +108,18 @@ function getTask() {
     for (let i = 0; i < response.length; i++) {
       $('#table_input').append(`
       <tr>
-<<<<<<< HEAD
+
         <td>${response[i].task}</td>
         <td><button id="button_complete">complete</button></td>
         <td><button id="button_delete">delete</button></td>
-=======
+
         <td>${response[i].task}
         <span>
         <button id="button_complete">complete</button>
         <button id="button_delete">delete</button>
         </span>
         </td>
->>>>>>> feature-post
+
       </tr>
       `);
     }
@@ -131,6 +131,9 @@ function getTask() {
  * NAME:
  * DESCRIPTION:
  */
+
+
+
 // function taskTransfer() {
 //   $.ajax.put('/:id' {task})
 // }
@@ -154,6 +157,9 @@ function getTask() {
 //     .catch((err) => console.error(err));
 // }
 
+/**
+ * DELETE INCANTATION
+ */
 
 
 

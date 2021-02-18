@@ -33,7 +33,6 @@ router.post('/', function (request, response) {
 });
 /**
  * GET INCANTATION
-<<<<<<< HEAD
  * NAME: 'GET'
  * DESCRIPTION:grab the query from the DOM and insert that from server to and feed the
  * updated query into the "task" database and display the results per row
@@ -41,7 +40,7 @@ router.post('/', function (request, response) {
  * 
  * NAME:
  * DESCRIPTION:
->>>>>>> feature-post
+
  */
 router.get('/', function (request, response) {
   // I want to select everything in the workout list and set the order by id
@@ -56,8 +55,7 @@ router.get('/', function (request, response) {
       response.sendStatus(500);
     });
 });
-<<<<<<< HEAD
-=======
+
 /**
  * PUT INCANTATION
  * 
@@ -66,8 +64,8 @@ router.get('/', function (request, response) {
  * 
  */
 router.put('/:id', function (request, response) {
-  console.log('this is the req.params.id',request.params.id);
-  console.log('this is the req.body', request.body);
+  console.log('put: this is the req.params.id',request.params.id);
+  console.log('put: this is the req.body', request.body);
 
   // set the taskId to be the object of "id"
   // set the SQL text to be a variable that pool will use to manipulate the database information
@@ -88,7 +86,22 @@ router.put('/:id', function (request, response) {
 /**
  * DELETE INCANTATION
  */
-router.delete('/:id', function (request, response) )
->>>>>>> feature-post
+router.delete('/:id', function (request, response) {
+  console.log('delete: this is the req.params.id', request.params.id);
+  console.log('delete: this is the req.body', request.body);
+
+  let requestId = requestId.params.id;
+  let sqlText = 'DELETE FROM "weekend_todo" WHERE "id"=$1;';
+
+  pool.query(sqlText, [requestId])
+    .then((result) => {
+      console.log('task deleted', result);
+      response.sendStatus(200);
+    }).catch((error) => {
+      console.log(`this is the delete error ${sqlText}`)
+      response.sendStatus(500);
+    })
+})
+
 
 module.exports = router;
