@@ -84,6 +84,8 @@ function completeClick() {
    * the current table will turn green
    * and append the information to the completed list
    */
+  insertTask();
+  
 }
 
 
@@ -132,7 +134,17 @@ function getTask() {
  * DESCRIPTION:
  */
 
+function insertTask (taskId) {
+  console.log('inside of the insertTask function');
 
+  // client to server handshake
+  $.ajax.put(`/task${taskId}`, {taskId})
+    .then((res) => {
+      console.log(res);
+      $('#task_to_insert').empty();
+      getTask();
+    }).catch((err) => console.error(err));
+}
 
 // function taskTransfer() {
 //   $.ajax.put('/:id' {task})
