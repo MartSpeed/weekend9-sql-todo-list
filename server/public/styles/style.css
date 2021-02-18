@@ -16,12 +16,12 @@ table {
   background-color: orange;
 }
 input {
-  margin: 5px;
-  padding: 8px;
+  margin: 0;
+  padding: 0;
 }
 button {
-  margin: 5px;
-  padding: 8px;
+  margin: 0;
+  padding: 0;
 }
 .green {
   background-color: green;

@@ -12,7 +12,10 @@ function onReady() {
   getTask();
 
   // click listeners
+  // complete function turn the <td> element green and clears the input value
   $(document).on('click', '#button_complete', completeClick);
+  // delete function removes the <td> element and clears it from the database value
+  $(document).on('click', '#button_delete', deleteTask);
 }
 
 /**
@@ -31,7 +34,7 @@ function onReady() {
  */
 function addTask(event) {
   event.preventDefault();
-  console.log('this is the addTask function');
+  //console.log('this is the addTask function');
   let task = $('#task_to_insert').val();
   //console.log('task is', task);
 
@@ -68,14 +71,17 @@ function addTask(event) {
  * table item to green.
  */
 function completeClick() {
-  let task = $('#table_input').val();
+  //let task = $('#table_input').val();
+
   console.log('inside the complete button');
+
   $(this).parent().parent().addClass('green');
-  $('#table_complete').append(`
-    <tr>
-      <td>${task}</td>
-    </tr>
-  `);
+
+  /**
+   * when clicked
+   * the current table will turn green
+   * and append the information to the completed list
+   */
 }
 
 /**
@@ -110,6 +116,40 @@ function getTask() {
     }
   });
 }
+/**
+ * PUT INCANTATION
+ * 
+ * NAME:
+ * DESCRIPTION:
+ */
+// function taskTransfer() {
+//   $.ajax.put('/:id' {task})
+// }
+
+// function onTransfer(koalaId) {
+//   // console.log('transfer btn clicked');
+//   // console.log($(this).data('id'));
+
+//   $.ajax({
+//     method: 'PUT',
+//     url: `/koalas/readyForTransfer/${koalaId}`,
+//     data: {
+//       koalaId,
+//     },
+//   })
+//     .then((res) => {
+//       console.log(res);
+//       $('#viewKoalas').empty();
+//       getKoalas();
+//     })
+//     .catch((err) => console.error(err));
+// }
+
+
+
 
 // <td><button id="button_complete">complete</button></td>
 // <td><button id="button_delete">delete</button></td>
+function deleteTask() {
+  console.log('inside the deleteTask function');
+}
