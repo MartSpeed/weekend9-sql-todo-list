@@ -33,19 +33,6 @@ function addTask(event) {
   //console.log('this is the addTask function');
   let task = $('#task_to_insert').val();
   //console.log('task is', task);
-
-  /**
-   * pushes the the value of the input element into the <td> of the <tr> on the DOM
-   * then we need to send th is information to the server and POST that information in
-   * console log.
-   */
-  $('#table_input').append(`
-    <tr>
-        <td>${task}</td>
-        <td><button id="button_complete">complete</button></td>
-        <td><button id="button_delete">delete</button></td>
-    </tr>
-  `);
   $.ajax({
     method: 'POST',
     url: '/task',
@@ -53,7 +40,22 @@ function addTask(event) {
   })
     .then(function (response) {
       // clear the task list input button
+      $('#task_to_insert').val('');
       console.log('this is the then function', response);
+      /**
+       * pushes the the value of the input element into the <td> of the <tr> on the DOM
+       * then we need to send th is information to the server and POST that information in
+       * console log.
+       */
+    //   $('#table_input').append(`
+    //   <tr>
+    //       <td>${task}</td>
+    //       <td><button data-id="${task.id}"  id="button_complete">complete</button></td>
+    //       <td><button data-id="${task.id}"  id="button_delete">delete</button></td>
+    //   </tr>
+    // `);
+      $('#table_input').empty();
+      getTask();
     })
     .catch(function (error) {
       console.log(error);
@@ -72,19 +74,24 @@ function addTask(event) {
 //   $('#input_complete_cg').addClass('green');
 // }
 
-function completeClick() {
-  //let task = $('#table_input').val();
-
-  console.log('inside the complete button');
-
-  $(this).parent().parent().addClass('green');
+function completeClick(event) {
+  let taskId = event.target.dataset.id;
+  // client to server handshake
+  $.ajax({
+    method: 'PUT',
+    url: `/task/${taskId}`,
+    data: {taskId}
+  }).then((res) => {
+    console.log(res);
+    $(this).parent().parent().addClass('green');
+  }).catch((err) => console.error(err));
 
   /**
    * when clicked
    * the current table will turn green
    * and append the information to the completed list
    */
-  insertTask();
+  //insertTask();
   
 }
 
@@ -108,20 +115,19 @@ function getTask() {
   }).then(function (response) {
     console.log('GET response', response);
     for (let i = 0; i < response.length; i++) {
+      var color = "";
+
+
+      if(response[i].done === true) {
+        color = "green";
+      }
+
       $('#table_input').append(`
       <tr>
 
-        <td>${response[i].task}</td>
-        <td><button id="button_complete">complete</button></td>
-        <td><button id="button_delete">delete</button></td>
-
-        <td>${response[i].task}
-        <span>
-        <button id="button_complete">complete</button>
-        <button id="button_delete">delete</button>
-        </span>
-        </td>
-
+        <td class="${color}">${response[i].task}</td>
+        <td><button data-id="${response[i].id}" id="button_complete">complete</button></td>
+        <td><button data-id="${response[i].id}" id="button_delete">delete</button></td>
       </tr>
       `);
     }
@@ -134,17 +140,16 @@ function getTask() {
  * DESCRIPTION:
  */
 
-function insertTask (taskId) {
-  console.log('inside of the insertTask function');
+// function insertTask (taskId) {
+//   console.log('inside of the insertTask function');
 
-  // client to server handshake
-  $.ajax.put(`/task${taskId}`, {taskId})
-    .then((res) => {
-      console.log(res);
-      $('#task_to_insert').empty();
-      getTask();
-    }).catch((err) => console.error(err));
-}
+//   // client to server handshake
+//   $.ajax.put(`/task/${taskId}`, {taskId})
+//     .then((res) => {
+//       console.log(res);
+//       getTask();
+//     }).catch((err) => console.error(err));
+// }
 
 // function taskTransfer() {
 //   $.ajax.put('/:id' {task})
@@ -177,6 +182,20 @@ function insertTask (taskId) {
 
 // <td><button id="button_complete">complete</button></td>
 // <td><button id="button_delete">delete</button></td>
-function deleteTask() {
-  console.log('inside the deleteTask function');
+function deleteTask(event) {
+  let deleteTaskId = event.target.dataset.id;
+  console.log('this is event', event);
+  console.log('inside the deleteTask function');  
+
+  $.ajax({
+    method: 'DELETE',
+    url: `/task/${deleteTaskId}`
+  })
+  .then(response => {
+    console.log('this is the DELETE response', response);
+    $(event.target).parent().parent().remove();
+  })
+  .catch((error) => {
+    console.log('this is the DELETE error', error);
+  })
 }

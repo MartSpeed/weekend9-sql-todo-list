@@ -25,6 +25,7 @@ router.post('/', function (request, response) {
     .query(sqlText, [sqlArgs])
     .then(function (dbResponse) {
       response.sendStatus(200);
+      console.log('this is the dbResponse', dbResponse);
     })
     .catch(function (error) {
       console.log('POST error', error);
@@ -90,7 +91,7 @@ router.delete('/:id', function (request, response) {
   console.log('delete: this is the req.params.id', request.params.id);
   console.log('delete: this is the req.body', request.body);
 
-  let requestId = requestId.params.id;
+  let requestId = request.params.id;
   let sqlText = 'DELETE FROM "weekend_todo" WHERE "id"=$1;';
 
   pool.query(sqlText, [requestId])
@@ -98,7 +99,7 @@ router.delete('/:id', function (request, response) {
       console.log('task deleted', result);
       response.sendStatus(200);
     }).catch((error) => {
-      console.log(`this is the delete error ${sqlText}`)
+      console.log(`this is the delete error ${sqlText}`, error);
       response.sendStatus(500);
     })
 })
